@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Outfit:wght@300;400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Outfit:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/style.css" />
@@ -31,7 +31,9 @@
       </div>
 
       <div class="layer layer-girl" data-depth="0.18">
-        <img src="Assets/girl.png" alt="" draggable="false" />
+        <div class="girl-slide">
+          <img src="Assets/girl.png" alt="" draggable="false" />
+        </div>
       </div>
 
       <div class="vignette" aria-hidden="true"></div>
@@ -39,28 +41,74 @@
 
       <header class="topbar">
         <nav class="nav" aria-label="Primary">
-          <a href="#music">Music</a>
-          <a href="#story">Story</a>
-          <a href="#visuals">Visuals</a>
-          <a href="#contact">Contact</a>
+          <button type="button" class="nav-link" data-section="music">Music</button>
+          <button type="button" class="nav-link" data-section="story">Story</button>
+          <button type="button" class="nav-link" data-section="visuals">Visuals</button>
+          <button type="button" class="nav-link" data-section="contact">Contact</button>
         </nav>
       </header>
 
-      <main class="hero">
+      <main class="hero" id="hero">
         <div class="hero-copy">
           <h1>Endless moonlight</h1>
           <p class="tagline">A soundtrack for other worlds</p>
-          <a class="cta" href="#music">Enter the dream</a>
+          <button class="cta" type="button" data-section="music">
+            Enter the dream
+          </button>
         </div>
       </main>
 
-      <aside class="player" aria-label="Featured track">
-        <button
-          class="play-btn"
-          type="button"
-          id="playBtn"
-          aria-label="Play Moon Over Silent Water"
-        >
+      <div class="section-stage" id="sectionStage" aria-hidden="true">
+        <article class="section-frame" id="sectionFrame">
+          <button class="section-close" type="button" id="sectionClose" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+
+          <div class="section-panel" data-panel="music" hidden>
+            <h2>Music</h2>
+            <p class="section-lead">Tracks from the dream — play any, or browse in the player.</p>
+            <ul class="track-list" id="trackList"></ul>
+            <p class="track-empty" id="trackEmpty" hidden>
+              Add audio files to the <code>music</code> folder, then list them in
+              <code>js/playlist.js</code>.
+            </p>
+          </div>
+
+          <div class="section-panel" data-panel="story" hidden>
+            <h2>Story</h2>
+            <p>
+              A quiet world beyond the horizon, lit only by endless moonlight.
+              Soft scores drift across water and cloud — a soundtrack for other
+              worlds.
+            </p>
+          </div>
+
+          <div class="section-panel" data-panel="visuals" hidden>
+            <h2>Visuals</h2>
+            <p>
+              Stills, loops, and dream fragments from the project. Visual pages
+              can grow here as new art arrives.
+            </p>
+          </div>
+
+          <div class="section-panel" data-panel="contact" hidden>
+            <h2>Contact</h2>
+            <p>
+              Reach out for listening links, collabs, and press. Replace this
+              text with your email or socials.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <aside class="player" aria-label="Audio player">
+        <button class="skip-btn" type="button" id="prevBtn" aria-label="Previous track">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15.5 5.5L8 12l7.5 6.5V5.5z" />
+          </svg>
+        </button>
+
+        <button class="play-btn" type="button" id="playBtn" aria-label="Play">
           <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M8 5.5v13l11-6.5L8 5.5z" />
           </svg>
@@ -68,8 +116,15 @@
             <path d="M7 5h3.5v14H7V5zm6.5 0H17v14h-3.5V5z" />
           </svg>
         </button>
+
+        <button class="skip-btn" type="button" id="nextBtn" aria-label="Next track">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8.5 5.5L16 12l-7.5 6.5V5.5z" />
+          </svg>
+        </button>
+
         <div class="player-meta">
-          <span class="track-title">Moon Over Silent Water</span>
+          <span class="track-title" id="trackTitle">No tracks yet</span>
           <div class="waveform" aria-hidden="true">
             <span></span><span></span><span></span><span></span><span></span>
             <span></span><span></span><span></span><span></span><span></span>
@@ -79,27 +134,12 @@
             <span></span><span></span><span></span><span></span><span></span>
           </div>
         </div>
-        <audio id="audio" preload="metadata" src="Assets/track.mp3"></audio>
+
+        <audio id="audio" preload="metadata"></audio>
       </aside>
     </div>
 
-    <section class="panel" id="music">
-      <h2>Music</h2>
-      <p>Soft scores and night atmospheres — add your releases here.</p>
-    </section>
-    <section class="panel" id="story">
-      <h2>Story</h2>
-      <p>A quiet world beyond the horizon, lit only by endless moonlight.</p>
-    </section>
-    <section class="panel" id="visuals">
-      <h2>Visuals</h2>
-      <p>Stills, loops, and dream fragments from the project.</p>
-    </section>
-    <section class="panel" id="contact">
-      <h2>Contact</h2>
-      <p>Reach out for listening links, collabs, and press.</p>
-    </section>
-
+    <script src="js/playlist.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
