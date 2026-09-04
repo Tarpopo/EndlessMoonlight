@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Endless Moonlight</title>
+    <meta
+      name="description"
+      content="Endless Moonlight — a soundtrack for other worlds."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Outfit:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="scene" id="scene">
+      <div class="layer layer-sky" data-depth="0.02">
+        <img src="Assets/background.png" alt="" draggable="false" />
+      </div>
+
+      <div class="layer layer-moon" data-depth="0.06">
+        <img src="Assets/moon.png" alt="" draggable="false" />
+      </div>
+
+      <div class="layer layer-clouds" data-depth="0.1">
+        <img src="Assets/clouds.png" alt="" draggable="false" />
+      </div>
+
+      <div class="layer layer-girl" data-depth="0.18">
+        <img src="Assets/girl.png" alt="" draggable="false" />
+      </div>
+
+      <div class="vignette" aria-hidden="true"></div>
+      <div class="mist" aria-hidden="true"></div>
+
+      <header class="topbar">
+        <nav class="nav" aria-label="Primary">
+          <a href="#music">Music</a>
+          <a href="#story">Story</a>
+          <a href="#visuals">Visuals</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </header>
+
+      <main class="hero">
+        <div class="hero-copy">
+          <h1>Endless moonlight</h1>
+          <p class="tagline">A soundtrack for other worlds</p>
+          <a class="cta" href="#music">Enter the dream</a>
+        </div>
+      </main>
+
+      <aside class="player" aria-label="Featured track">
+        <button
+          class="play-btn"
+          type="button"
+          id="playBtn"
+          aria-label="Play Moon Over Silent Water"
+        >
+          <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8 5.5v13l11-6.5L8 5.5z" />
+          </svg>
+          <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 5h3.5v14H7V5zm6.5 0H17v14h-3.5V5z" />
+          </svg>
+        </button>
+        <div class="player-meta">
+          <span class="track-title">Moon Over Silent Water</span>
+          <div class="waveform" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+        <audio id="audio" preload="metadata" src="Assets/track.mp3"></audio>
+      </aside>
+    </div>
+
+    <section class="panel" id="music">
+      <h2>Music</h2>
+      <p>Soft scores and night atmospheres — add your releases here.</p>
+    </section>
+    <section class="panel" id="story">
+      <h2>Story</h2>
+      <p>A quiet world beyond the horizon, lit only by endless moonlight.</p>
+    </section>
+    <section class="panel" id="visuals">
+      <h2>Visuals</h2>
+      <p>Stills, loops, and dream fragments from the project.</p>
+    </section>
+    <section class="panel" id="contact">
+      <h2>Contact</h2>
+      <p>Reach out for listening links, collabs, and press.</p>
+    </section>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
